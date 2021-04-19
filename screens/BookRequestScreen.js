@@ -44,7 +44,7 @@ export default class BookRequestScreen extends Component{
   addRequest =async(bookName,reasonToRequest)=>{
     var userId = this.state.userId
     var randomRequestId = this.createUniqueId()
-    var books = await BookSearch.searchbook(bookName,'AIzaSyBAxX6wWyiWAQt4G5BDuKSY6hcIjJTQHFc')
+    var books = await BookSearch.searchbook(bookName,'AIzaSyBOnWyP2kJ_iloIDxobGpffzNYbp36cGAs')
     console.log("here in add request");
     db.collection('requested_books').add({
         "user_id": userId,
@@ -193,7 +193,7 @@ async getBooksFromApi (bookName){
   this.setState({bookName:bookName})
     if (bookName.length >2){
 
-    var books = await BookSearch.searchbook(bookName,'AIzaSyBAxX6wWyiWAQt4G5BDuKSY6hcIjJTQHFc')
+    var books = await BookSearch.searchbook(bookName,'AIzaSyBOnWyP2kJ_iloIDxobGpffzNYbp36cGAs')
     this.setState({
       dataSource:books.data,
       showFlatlist:true
