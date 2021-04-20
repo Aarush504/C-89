@@ -8,6 +8,8 @@ import * as Permissions from "expo-permissions";
 import firebase from 'firebase';
 import db from "../config";
 import axios from "axios";
+import {Icon} from 'react-native-elements';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default class CustomSideBarMenu extends Component{
   state = {
@@ -117,12 +119,30 @@ export default class CustomSideBarMenu extends Component{
           <DrawerItems {...this.props}/>
         </View>
         <View style={styles.logOutContainer}>
-          <TouchableOpacity style={styles.logOutButton}
-          onPress = {() => {
-              this.props.navigation.navigate('WelcomeScreen')
-              firebase.auth().signOut()
-          }}>
-            <Text>Log Out</Text>
+          <TouchableOpacity
+          style={{
+            flexDirection:'row',
+            width:'100%',
+            height:'100%',
+          }}
+          onPress={()=>{
+            this.props.navigation.navigate('WelcomeScreen')
+            firebase.auth().signOut()
+          }}
+          >
+            <Icon
+            name="logout"
+            type='antdesign'
+            size={RFValue(20)}
+            iconStyle={{paddingLeft:RFValue(10)}}
+            />
+            <Text 
+            style={{
+              fontSize:RFValue(15),
+              fontWeight:'bold',
+              marginLeft:RFValue(30)
+            }}
+            >Log Out</Text>
           </TouchableOpacity>
         </View>
       </View>
